@@ -103,67 +103,61 @@
   <!-- 자바스크립트 클릭 이벤트 -->
   <script>
 
+    function myFun(param1) {    
+      var strRes = "myFun() 함수의 매개변수 기본값으로 리턴";
+      if (param1) {
+        strRes = "myFun() 함수에서 리턴한 값은 = " + param1;
+      } 
+      return strRes;
+    }
+
+    function okFun() {
+      return true;
+    }
+    function cancelFun() {
+      return false;
+    }
+    function askfun(strQuestion) {
+      return confirm(strQuestion, function() { return true; }, function() { return false; } );
+    }
+
     let errMsg = "변수 값이 존재하지 않음\n기본값을 출력함";
-    function loopClick(param) {      
+    function funClick(param) {      
       switch(param) {
         case "p1":            
-          var i = 0, sum = 0;
-          var num = prompt("1... 몇까지 합산할까요?", [10]);
-          while (i < num) {
-            i++;
-            sum += i;
-          }          
-          alert(`1...${num} 합산한 값은 = ` + sum);
+          alert(myFun(param));
           break;
 
         case "p2":
-          var i = 3;
-          while (i) i--;
-          alert('while (i) i-- = ' + i);
+          alert(myFun());
           break;
 
         case "p3":
-          var i = 0, sum = 0;          
-          var num = prompt("1... 몇까지 합산할까요?", [10]);
-          do {            
-            i ++;
-            sum += i;
-          } while (i < num);
-          alert(`1...${num}까지 합산 값은  = ` + sum);
+          let res = (confirm("동의하십니까?")) ? okFun() : cancelFun();
+          alert("동의한 결과는 = " + res);
           break;
           
         case "p4":
-          var sum = 0;
-          var num = prompt("1... 몇까지 합산할까요?", [10]);
-          for (var i=1; i<=num; i++) sum += i;          
-          alert(`1...${num}까지 합산 값은 = ` + sum);
+          let resA = (confirm("동의하십니까?"))
+          alert("동의한 결과는 = " + resA);
           break;
 
         case "p5":          
-          var num = prompt("1..10 좋아하는 숫자를 입력하세요?", [7]);
-          var num = Number(num);
-          switch (num) {
-            case 1:
-            case 2:
-            case 3:
-              alert("1..3 범위 내 값을 선택하였습니다.");
-              break;
-            case 4:
-            case 5:
-            case 6:
-              alert("4..6 범위 내 값을 선택하였습니다.");
-              break;
-            case 7:
-            case 8:
-            case 9:
-              alert("7..9 범위 내 값을 선택하였습니다.");
-              break;
-            case 10:
-              alert("10 값을 선택하였습니다.");
-              break;
-            default:
-              alert("1에서 10사이의 값을 선택하세요");
-          }
+          let resB = (prompt("나이가 어떻게 되시나요?", [19]) > 18) ? okFun() : cancelFun();
+          alert("18 이상이면 true, 그렇지 않으면 false = " + resB);
+          break;
+        
+        case "p6":
+          (function(a, b) {
+            alert("익명함수를 통한 결과 100 + 200 = " + String(a + b));
+          })(100, 200);  
+          break;
+
+        // IE 스크립트 오류 발생으로 전체 실행되지 않음
+        // 아래 소스를 주석처리 후 실행하면 처리됨
+        case "p7":
+          sum = (a, b) => a + b;                    
+          alert("resC = (100, 200) => 100 + 200; = " + sum(100, 200));
           break;
 
         default:
@@ -178,11 +172,17 @@
   <h2>javascript - 반복문</h2>  
   <div id="gridBox">    
     <div class="gridLine">구분</div><div class="gridLine">명령어</div><div class="gridLine">미리보기</div><div class="gridLine">소스</div>
-    <div>반복문</div><div>while1</div><div><a href="#" onclick="loopClick('p1')">실행</a></div><div>while (condition) { ... }</div>
-    <div>      </div><div>while2</div><div><a href="#" onclick="loopClick('p2')">실행</a></div><div>while (condition) ...</div>
-    <div>      </div><div>do..while</div><div><a href="#" onclick="loopClick('p3')">실행</a></div><div>do { ... } while (condition)</div>
-    <div>      </div><div>for</div><div><a href="#" onclick="loopClick('p4')">실행</a></div><div>for( ) { ... }</div>
-    <div>조건문</div><div>switch</div><div><a href="#" onclick="loopClick('p5')">실행</a></div><div>switch (x) { case 'value1': ...; break; case 'value2': ...; break; default: ...}</div>
+    <div>함수</div><div>function1</div><div><a href="#" onclick="funClick('p1')">실행</a></div><div>function (param1, param2) { ... return resultValue }</div>
+    <div>    </div><div>function2</div><div><a href="#" onclick="funClick('p2')">실행</a></div><div>function (param = "기본값") { ... return resultValue }</div>
+    <div>콜백 함수</div><div>callback funtion</div><div><a href="#" onclick="funClick('p3')">실행</a></div><div>askFun("동의하십니까?", okFun, cancelFun);</div>
+    <div>익명 함수</div><div>anonymous funtion1</div><div><a href="#" onclick="funClick('p4')">실행</a></div><div>askFun("동의하십니까?", function okFun(), function cancelFun());</div>
+    <div>         </div><div>anonymous funtion2</div><div><a href="#" onclick="funClick('p5')">실행</a></div><div>askFun("동의하십니까?", function okFun(), function cancelFun());</div>
+    <div>         </div><div>anonymous funtion3</div><div><a href="#" onclick="funClick('p6')">실행</a></div><div>(function(sum(a, b) { alert( a+b ) })(100, 200);</div>
+    <div>화살표 함수(ie→X)</div><div>arrow funtion2</div><div><a href="#" onclick="funClick('p7')">실행</a></div><div>alert(sum(100, 200) => 100 + 200)</div>
+    
+    
+    <div>      </div><div>for</div><div><a href="#" onclick="funClick('p4')">실행</a></div><div>for( ) { ... }</div>
+    <div>조건문</div><div>switch</div><div><a href="#" onclick="funClick('p5')">실행</a></div><div>switch (x) { case 'value1': ...; break; case 'value2': ...; break; default: ...}</div>
     <div class="gridbottomLine"></div><div class="gridbottomLine"></div><div class="gridbottomLine"></div><div class="gridbottomLine"></div>
   </div>
 </body>
