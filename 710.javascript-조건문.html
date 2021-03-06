@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>git & github guide</title>    
+  <title>javascript</title>    
   <style>
     html, body, div, p, span, strong, b, em, iframe, 
     pre, h1, h2, h3, h4, h5, h6, img, dl, dt, dd, fieldset, 
@@ -76,10 +76,10 @@
 
     #gridBox {
       display: grid;
-      grid-template-columns: 400px 600px 1fr;
+      grid-template-columns: 200px 200px 200px 1fr;
       border: 0;
     }
-    h1 {
+    h2 {
       padding: 10px;
       margin: 10px;
       text-align: center;      
@@ -87,7 +87,8 @@
     div {
       padding: 10px;
       border-top: 1px solid gainsboro;
-    }
+    }   
+
     .gridLine {      
       color: blueviolet;
       font-weight: 700;
@@ -98,32 +99,39 @@
       border-top: 2px solid green;
     }
   </style>
+  
+  <!-- 자바스크립트 클릭 이벤트 -->
+  <script>
+
+    let errMsg = "변수 값이 존재하지 않음\n기본값을 출력함";
+    function conClick(param) {      
+      switch(param) {
+        case "p1":            
+          let age = prompt("당신의 나이는 몇살입니까?", [49]);
+          var value = age > 18 ? true : false;
+          alert('value = age > 18 ? true : false;' +' = ' + value);
+          break;
+
+        case "p2":
+          var value = value || 100;
+          alert('value || 100' +' = ' + value);
+          break;
+
+        default:
+          alert(errMsg);
+      }
+    }
+
+  </script>
+
 </head>
 <body>
-  <h1>Git & Github</h1>
+  <h2>javascript - 조건문</h2>  
   <div id="gridBox">    
-    <div class="gridLine">구분</div><div class="gridLine">명령어</div><div class="gridLine">처리결과</div>    
-    <div>확장 프로그램 설치</div><div>IntelliSense for CSS class names in HTML</div><div>HTML Class 자동조회</div>
-    <div>깃 버전</div><div>git --version</div><div>git version 2.30.0.windows.2</div>
-    <div>깃 사용자명 등록</div><div>git config --global user.name "dims111"</div><div>user.name=dims1111</div>
-    <div>깃 이메일주소 등록</div><div>git config --global user.emanil "dims1111@gamil.com"</div><div>user.email=dims1111@gmail.com</div>
-    <div>깃 등록정보 조회</div><div>git config --list</div><div></div>
-    <div>깃 로컬 초기화</div><div>git init -> master</div><div></div>
-    <div>깃 상태</div><div>git status</div><div></div>
-
-    <div>깃 리모트</div><div>git remote</div><div></div>
-    <div>깃 리모트 URL 추가</div><div>git remote add origin https://github.com/dims1111/CHJJ.git</div><div></div>
-    <div>깃 리모트 브랜치</div><div>git remote -> origin</div><div>diff.astextplain.textconv=astextplain ...</div>
-    <div>깃 리모트 브랜치 origin 조회</div><div>git remote show origin</div><div>Push  URL: https://github.com/dims1111/CHJJ.git</div>
-    
-    <div>로컬 변경파일 리모트 올리기 제외</div><div>파일 생성</div><div>.gitignore</div>
-    <div>제외 파일 또는 폴더</div><div>~*</div><div></div>
-
-    <div>로컬 변경내용 추가</div><div>git add *</div><div></div>    
-    <div>로컬 변경내용 커밋</div><div>git commit -m "first commit"</div><div>[master (root-commit) 8c0828f] first commit</div>
-    <div>리모트 변경사항 로컬(master)로 내려받기</div><div>git pull origin master</div><div></div>
-    <div>로컬 변경사항 리모트(origin)에 올리기</div><div>git push origin master</div><div>Writing objects: 100% (3/3), 1.45 KiB | 1.45 MiB/s, done.</div>
-    <div class="gridbottomLine"></div><div class="gridbottomLine"></div><div class="gridbottomLine"></div>
+    <div class="gridLine">구분</div><div class="gridLine">명령어</div><div class="gridLine">미리보기</div><div class="gridLine">소스</div>
+    <div>조건부 연산자</div><div>?</div><div><a href="#" onclick="conClick('p1')">실행</a></div><div>let accessAllowed = (age > 18) ? true : false;</div>
+    <div>병합 연산자</div><div>||</div><div><a href="#" onclick="conClick('p2')">실행</a></div><div>alert(height || 100);</div>
+    <div class="gridbottomLine"></div><div class="gridbottomLine"></div><div class="gridbottomLine"></div><div class="gridbottomLine"></div>
   </div>
 </body>
 </html>

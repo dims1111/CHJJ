@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>javascript</title>    
+  <style>
+    html, body, div, p, span, strong, b, em, iframe, 
+    pre, h1, h2, h3, h4, h5, h6, img, dl, dt, dd, fieldset, 
+    form, legend, label, table, caption, thead, tbody, tfoot, 
+    tr, th, td, ul, ol, li, a, input, select, textarea {
+      margin: 0;
+      padding: 0; 
+      border: 0 none; 
+    } 
+    body {
+      font-family: MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, 
+      Sans-serif, Arial; 
+      font-size: 18px; 
+      line-height: 1;
+      color: #333;
+    } 
+    ul, ol, li {
+      list-style: none;
+    } em, 
+    address {
+      font-style: normal;
+    } 
+    img {
+      border: 0 none; 
+      font-size: 0;
+      line-height: 0;
+    } 
+    sup {
+      position: relative;
+      top: 2px;
+      font-size: 11px;
+      line-height: 100%;
+    } 
+    table {
+      border-collapse: collapse; 
+      border-spacing:0; 
+    } 
+    caption {
+      overflow: hidden;
+      width: 0;
+      height: 0;
+      font-size: 0; 
+      line-height: 0;
+    } 
+    th, td { 
+      vertical-align: middle;
+    } 
+    a {
+      color: #333; 
+      text-decoration: none; 
+      line-height: 1;
+    } 
+    a:hover, a:focus, a:active {
+      text-decoration: underline;
+    } 
+    a:visited {
+      color: #333;
+    } 
+    *, html {
+      box-sizing: border-box; 
+      -webkit-box-sizing: border-box; 
+      -moz-box-sizing: border-box; 
+    } 
+    *, *:before, *:after {
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box; 
+      -moz-box-sizing: border-box;
+    }
+
+    #gridBox {
+      display: grid;
+      grid-template-columns: 200px 200px 200px 1fr;
+      border: 0;
+    }
+    h2 {
+      padding: 10px;
+      margin: 10px;
+      text-align: center;      
+    }
+    div {
+      padding: 10px;
+      border-top: 1px solid gainsboro;
+    }   
+
+    .gridLine {      
+      color: blueviolet;
+      font-weight: 700;
+      border-top: 2px solid green;
+      border-bottom: 2px solid green;
+    }
+    .gridbottomLine {      
+      border-top: 2px solid green;
+    }
+  </style>
+  
+  <!-- 자바스크립트 클릭 이벤트 -->
+  <script>
+
+    let errMsg = "변수 값이 존재하지 않음\n기본값을 출력함";
+    let name = "javascript";
+    function alertClick(param) {
+      switch(param) {
+        case "p1":
+          alert(`Hello ${name} \n역따옴표는 매개변수 처리 가능합니다. \n그리고, 반갑습니다.`);
+          break;
+
+        case "p2":
+          let name = prompt("당신의 이름을 입력합니다.", ["홍길동"]);
+          alert(`당신의 이름은 아래와 같습니다. \n${name}`);
+          break;
+
+        case "p3":          
+          if (confirm("당신의 이름을 홍길동입니까?")) {
+            alert("당신은 홍길동입니다.");
+          } else {
+            alert("당신은 홍길동이가 아닙니다.");
+          }
+          break;
+
+        default:
+          alert(errMsg);
+      }
+    }    
+
+    function numClick(param) {
+      let value = 0;
+      switch(param) {
+        case "p1":            
+          value = Number("   123   ");
+          alert('Number("   123   ")' +' = ' + value);
+          break;
+
+        case "p2":
+          value = Number("   123z   ");
+          alert('Number("   123z   ")' +' = ' + value);
+          break;
+
+        case "p3":
+          value = Number(true);
+          alert('Number(true)' +' = ' + value);
+          break;
+          
+        case "p4":
+          value = Number(false);
+          alert('Number(false)' +' = ' + value);
+          break;  
+
+        default:
+          alert(errMsg);
+      }
+    }
+
+    function bolClick(param) {
+      let value = true;
+      switch(param) {
+        case "p1":            
+          value = Boolean(1);
+          alert('Boolean(1)' +' = ' + value);
+          break;
+
+        case "p2":
+          value = Boolean(0);
+          alert('Boolean(0)' +' = ' + value);
+          break;
+
+        case "p3":
+          value = Boolean("aaaa");
+          alert('Boolean("aaaa")' +' = ' + value);
+          break;
+          
+        case "p4":
+          value = Boolean("");
+          alert('Boolean("")' +' = ' + value);
+          break;  
+
+        default:
+          alert(errMsg);
+      }
+    }
+
+    function typClick(param) {      
+      switch(param) {
+        case "p1":            
+          var value = typeof undefined;
+          alert('typeof undefined' +' = ' + value);
+          break;
+
+        case "p2":
+          value = typeof 0;
+          alert('typeof 0' +' = ' + value);
+          break;
+
+        case "p3":
+          value = typeof 10n;
+          alert('typeof 10n' +' = ' + value);
+          break;
+          
+        case "p4":
+          value = typeof true;
+          alert('typeof true' +' = ' + value);
+          break;  
+
+        case "p5":            
+          var value = typeof "foo";
+          alert('typeof "foo"' +' = ' + value);
+          break;
+
+        case "p6":
+          value = typeof Symbol("uuid");
+          alert('typeof Symbol("uuid")' +' = ' + value);
+          break;
+
+        case "p7":
+          value = typeof Math;
+          alert('typeof Math' +' = ' + value);
+          break;
+          
+        case "p8":
+          value = typeof null;
+          alert('typeof null' +' = ' + value);
+          break;
+
+        case "p9":
+          value = typeof alert;
+          alert('typeof alert' +' = ' + value);
+          break;
+
+        default:
+          alert(errMsg);
+      }
+    }
+
+  </script>
+
+</head>
+<body>
+  <h2>javascript - 자료형</h2>  
+  <div id="gridBox">    
+    <div class="gridLine">구분</div><div class="gridLine">명령어</div><div class="gridLine">미리보기</div><div class="gridLine">소스</div>
+    <div>메시지 박스</div><div>alert</div><div><a href="#" onclick="alertClick('p1')">실행</a></div><div>alert("Hello javascript\n반갑습니다.");</div>
+    <div>프롬프트 박스</div><div>prompt</div><div><a href="#" onclick="alertClick('p2')">실행</a></div><div>result = prompt(title, [default]);</div>
+    <div>확인 메시지 박스</div><div>confirm</div><div><a href="#" onclick="alertClick('p3')">실행</a></div><div>result = confirm(question);</div>
+
+    <div>자료형</div><div>undefined</div><div><a href="#" onclick="typClick('p1');">실행</a></div><div>typeof undefined</div>
+    <div>      </div><div>0</div><div><a href="#" onclick="typClick('p2');">실행</a></div><div>typeof 0</div>
+    <div>      </div><div>10n</div><div><a href="#" onclick="typClick('p3');">실행</a></div><div>typeof 10n</div>
+    <div>      </div><div>true</div><div><a href="#" onclick="typClick('p4');">실행</a></div><div>typeof true</div>
+    <div>      </div><div>"foo"</div><div><a href="#" onclick="typClick('p5');">실행</a></div><div>typeof "foo"</div>
+    <div>      </div><div>Symbol("uuid")</div><div><a href="#" onclick="typClick('p6');">실행</a></div><div>typeof Symbol("uuid")</div>
+    <div>      </div><div>Math</div><div><a href="#" onclick="typClick('p7');">실행</a></div><div>typeof Math</div>
+    <div>      </div><div>null</div><div><a href="#" onclick="typClick('p8');">실행</a></div><div>typeof null</div>
+    <div>      </div><div>alert</div><div><a href="#" onclick="typClick('p9');">실행</a></div><div>typeof alert</div>
+    
+    <div>숫자 변환</div><div>Number</div><div><a href="#" onclick="numClick('p1');">실행</a></div><div>Number("   123   ")</div>
+    <div>         </div><div>Number</div><div><a href="#" onclick="numClick('p2');">실행</a></div><div>Number("   123z   ")</div>
+    <div>         </div><div>Number</div><div><a href="#" onclick="numClick('p3');">실행</a></div><div>Number(true)</div>
+    <div>         </div><div>Number</div><div><a href="#" onclick="numClick('p4');">실행</a></div><div>Number(false)</div>
+
+    <div>불리언 변환</div><div>Boolean</div><div><a href="#" onclick="bolClick('p1');">실행</a></div><div>Boolean(1)</div>
+    <div>           </div><div>Boolean</div><div><a href="#" onclick="bolClick('p2');">실행</a></div><div>Boolean(0)</div>
+    <div>           </div><div>Boolean</div><div><a href="#" onclick="bolClick('p3');">실행</a></div><div>Boolean("aaaa")</div>
+    <div>           </div><div>Boolean</div><div><a href="#" onclick="bolClick('p4');">실행</a></div><div>Boolean("")</div>
+    
+    <div class="gridbottomLine"></div><div class="gridbottomLine"></div><div class="gridbottomLine"></div><div class="gridbottomLine"></div>
+  </div>
+</body>
+</html>
